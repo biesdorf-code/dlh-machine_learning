@@ -12,8 +12,8 @@ def determinant(matrix):
             not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
-    # handle 0x0 matrix: [[]] is a valid 0x0 matrix
-    # by convention, its determinant is 1
+    # handle 0x0 matrix: [[]] is 1
+
     if len(matrix) == 1 and len(matrix[0]) == 0:
         return 1
 
@@ -23,15 +23,12 @@ def determinant(matrix):
     if not all(len(row) == n for row in matrix):
         raise ValueError("matrix must be a square matrix")
 
-    # base case: 1x1 matrix like [[5]]
-    # the determinant is just the single element
+    # base case: 1x1
     if n == 1:
         return matrix[0][0]
 
-    # if 2x2, calculate the determinant and return
-    # using the formula: det = ad - bc
-    # [[ a, b ],
-    #  [ c, d ]]
+    # if 2x2
+
     if n == 2:
         a = matrix[0][0]
         b = matrix[0][1]
@@ -40,14 +37,7 @@ def determinant(matrix):
         det = a * d - b * c
         return det
 
-    # if 3x3 or more, calculate the determinant using
-    # cofactor expansion along the first row and return
-    #
-    # for each element in the first row:
-    #   1. determine the sign using (-1)^column
-    #   2. build the submatrix by removing row 0 and current column
-    #   3. multiply: sign * element * determinant(submatrix)
-    #   4. add to running total
+    # if 3x3 or more, cofactor expansion
     det = 0
     for j in range(n):
 
