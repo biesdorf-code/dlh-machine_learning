@@ -14,7 +14,7 @@ def bars():
     people = ['Farrah', 'Fred', 'Felicia']
     colors = ['red', 'yellow', '#ff8000', '#ffe5b4']
     labels = ['apples', 'bananas', 'oranges', 'peaches']
-    width = 0.75
+    width = 0.50
 
     bottom = np.zeros(3)
     for i in range(4):
