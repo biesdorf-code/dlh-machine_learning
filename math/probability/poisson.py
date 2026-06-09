@@ -5,7 +5,7 @@
 class Poisson:
     """a Poisson distribution"""
 
-    e = 2.7182818285
+    e = 2.7182818285  # approxuimation given by the project description
 
     def __init__(self, data=None, lambtha=1.):
         """initialize the instance"""
@@ -43,3 +43,19 @@ class Poisson:
         pmf_value = numerator / factorial
 
         return pmf_value
+
+    def cdf(self, k):
+        """calculates the value of the CDF for a given number of successes"""
+
+        # CDF - Cumulative Distribution Function, running total up to k
+
+        if not isinstance(k, int):
+            k = int(k)
+        if k < 0:
+            return 0  # no chance.
+
+        cdf_value = 0
+        for i in range(0, k + 1):
+            cdf_value += self.pmf(i)  # recurtion is the accumulative aspect.
+
+        return cdf_value
