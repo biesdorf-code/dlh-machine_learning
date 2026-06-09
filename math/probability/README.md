@@ -1,0 +1,1 @@
+Project with 12 tasks. Goal is to learn probability with AI in mind.
