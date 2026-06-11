@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""module that defines the class Exponential prob. distribution class"""
+"""module that defines the class Exponential probability distribution class"""
 
 
 class Exponential:
     """an Exponential distribution"""
 
-    e = 2.7182818285  # given at project description
+    e = 2.7182818285
 
     def __init__(self, data=None, lambtha=1.):
         """initialize the instance"""
@@ -31,6 +31,19 @@ class Exponential:
         e_to_the_neg_lambtha_x = Exponential.e ** (-self.lambtha * x)
         pdf_value = self.lambtha * e_to_the_neg_lambtha_x
 
-        # le
+        # the future wait doesn't care how long you've already waited.
 
         return pdf_value
+
+    def cdf(self, x):
+        """calculates the value of the CDF for a given time period"""
+        # what's the probability the event happens within time x
+        # CDF - Cumulative Distribution Function, P(wait <= x)
+
+        if x < 0:
+            return 0
+
+        e_to_the_neg_lambtha_x = Exponential.e ** (-self.lambtha * x)
+        cdf_value = 1 - e_to_the_neg_lambtha_x
+        # denovo - what's the probability the event happens within time x
+        return cdf_value
