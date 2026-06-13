@@ -49,7 +49,7 @@ class Normal:
     def pdf(self, x):
         """calculates the value of the PDF for a given x-value"""
 
-        # PDF - the height of the bell
+        # PDF - Prob. Density func.,the height of the bell
         # f(x) = (1 / (stddev * sqrt(2*pi))) * e^(-(x-mean)^2 / (2*stddev^2))
 
         left_multiplier = 1 / (self.stddev * (2 * Normal.pi) ** 0.5)
@@ -57,3 +57,27 @@ class Normal:
         pdf_value = left_multiplier * (Normal.e ** exponent)
 
         return pdf_value
+
+    def cdf(self, x):
+        """calculates the value of the CDF for a given x-value"""
+
+        # CDF - area under the bell up to x
+        # F(x) = (1/2) * [1 + erf((x - mean) / (stddev * sqrt(2)))]
+        # erf has no closed form, so use the series from the project sheet
+
+        arg = (x - self.mean) / (self.stddev * (2 ** 0.5))
+
+        # erf(arg) = (2/sqrt(pi)) * (arg - arg^3/3 + arg^5/10
+        #                            - arg^7/42 + arg^9/216)
+
+        polinomial = (
+            arg
+            - (arg ** 3) / 3
+            + (arg ** 5) / 10
+            - (arg ** 7) / 42
+            + (arg ** 9) / 216
+        )
+        erf = (2 / (Normal.pi ** 0.5)) * polinomial
+
+        cdf_value = (1 + erf) / 2  # puts the answer ranging form -1-> 1 to 0-1
+        return cdf_value
