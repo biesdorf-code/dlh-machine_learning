@@ -45,3 +45,15 @@ class Normal:
 
         x = self.mean + z * self.stddev
         return x
+
+    def pdf(self, x):
+        """calculates the value of the PDF for a given x-value"""
+
+        # PDF - the height of the bell
+        # f(x) = (1 / (stddev * sqrt(2*pi))) * e^(-(x-mean)^2 / (2*stddev^2))
+
+        left_multiplier = 1 / (self.stddev * (2 * Normal.pi) ** 0.5)
+        exponent = -((x - self.mean) ** 2) / (2 * self.stddev ** 2)
+        pdf_value = left_multiplier * (Normal.e ** exponent)
+
+        return pdf_value
