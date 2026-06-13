@@ -71,3 +71,20 @@ class Binomial:
 
         pmf_value = binomial_coefficient * success_part * failure_part
         return pmf_value
+
+    def cdf(self, k):
+        """calculates the value of the CDF for a given number of successes"""
+
+        # CDF - prob. of getting k OR FEWER successes, P(successes <= k)
+        # sum the discrete pmf from 0 up through k, (no infinitely small values
+
+        if not isinstance(k, int):
+            k = int(k)
+        if k < 0:  # below 0 is out of range
+            return 0
+
+        cdf_value = 0  # finite sum of x-es
+        for i in range(0, k + 1):
+            cdf_value += self.pmf(i)
+
+        return cdf_value
