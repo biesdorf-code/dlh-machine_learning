@@ -63,7 +63,7 @@ class Normal:
 
         # CDF - area under the bell up to x
         # F(x) = (1/2) * [1 + erf((x - mean) / (stddev * sqrt(2)))]
-        # erf has no closed form, so use the series from the project sheet
+        # The bell curve is not simpy defined, so we use the erf approximation
 
         arg = (x - self.mean) / (self.stddev * (2 ** 0.5))
 
