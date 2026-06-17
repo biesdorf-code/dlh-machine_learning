@@ -1,0 +1,1 @@
+This folder contains a few tasks about Bayesian Probability
