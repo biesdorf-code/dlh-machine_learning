@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """selects specific columns and every 60th row """
-import pandas as pd
 
 
 def slice(df):
