@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """concatenates coinbase and bitstamp dataframes indexed by Timestamp """
-
+import pandas as pd
 index = __import__('10-index').index
 
 
