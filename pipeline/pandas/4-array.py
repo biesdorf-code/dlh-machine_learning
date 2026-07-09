@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""selects the last 10 rows of High and Close as a numpy array
-"""
-import pandas as pd
+"""selects the last 10 rows of High and Close as a numpy array """
 
 
 def array(df):
