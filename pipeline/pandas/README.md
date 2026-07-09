@@ -1,0 +1,1 @@
+This projects has 14 tasks, it should help us learn Pandas.
