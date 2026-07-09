@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """sets the Timestamp column as the index of a pd.DataFrame
 """
-import pandas as pd
 
 
 def index(df):
