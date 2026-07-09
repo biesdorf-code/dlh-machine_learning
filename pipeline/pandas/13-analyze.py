@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""computes descriptive statistics for all columns except Timestamp
-"""
-import pandas as pd
+"""computes descriptive statistics for all columns except Timestamp"""
 
 
 def analyze(df):
