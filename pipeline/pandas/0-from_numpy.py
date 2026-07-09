@@ -3,7 +3,6 @@
 np.ndarray.
 """
 import pandas as pd
-import string
 
 
 def from_numpy(array):
@@ -12,5 +11,5 @@ def from_numpy(array):
     Returns: DataFrame with columns labeled in alphabetical
     order and capitalized.
     """
-    columns = list(string.ascii_uppercase[:array.shape[1]])
+    columns = [chr(65 + i) for i in range(array.shape[1])]
     return pd.DataFrame(array, columns=columns)
