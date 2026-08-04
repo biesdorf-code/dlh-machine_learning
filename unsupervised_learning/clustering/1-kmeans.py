@@ -4,12 +4,8 @@ import numpy as np
 
 
 def kmeans(X, k, iterations=1000):
-    """Perform K-means on a dataset.
+    """Perform K-means on a dataset."""
 
-    Returns: C, clss, or None, None on failure
-        C: numpy.ndarray of shape (k, d)
-        clss: numpy.ndarray of shape (n,)
-    """
     if not isinstance(X, np.ndarray) or len(X.shape) != 2:
         return None, None
     if not isinstance(k, int) or k <= 0:
