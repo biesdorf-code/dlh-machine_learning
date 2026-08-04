@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""module implements k-means"""
 import numpy as np
 
 
@@ -17,35 +18,34 @@ def kmeans(X, k, iterations=1000):
         return None, None
 
     initialize = __import__('0-initialize').initialize
-    n, d = X.shape  # ints
+    n, d = X.shape
 
-    low = X.min(axis=0)  # numpy.ndarray of shape (d,)
-    high = X.max(axis=0)  # numpy.ndarray of shape (d,)
+    low = X.min(axis=0)
+    high = X.max(axis=0)
 
-    C = initialize(X, k)  # numpy.ndarray of shape (k, d)
+    C = initialize(X, k)
     if C is None:
         return None, None
 
     for i in range(iterations):
-        C_prev = C.copy()  # numpy.ndarray of shape (k, d)
+        C_prev = C.copy()
 
-        # (n, 1, d) - (k, d) broadcasts to (n, k, d)
-        diff = X[:, np.newaxis] - C  # numpy.ndarray of shape (n, k, d)
-        dist = np.linalg.norm(diff, axis=2)  # numpy.ndarray of shape (n, k)
-        clss = np.argmin(dist, axis=1)  # numpy.ndarray of shape (n,)
+        diff = X[:, np.newaxis] - C
+        dist = np.linalg.norm(diff, axis=2)
+        clss = np.argmin(dist, axis=1)
 
         for j in range(k):
-            mask = X[clss == j]  # numpy.ndarray of shape (points_in_j, d)
+            mask = X[clss == j]
             if mask.size == 0:
-                C[j] = np.random.uniform(low, high)  # ndarray (d,)
+                C[j] = np.random.uniform(low, high)
             else:
-                C[j] = mask.mean(axis=0)  # numpy.ndarray of shape (d,)
+                C[j] = mask.mean(axis=0)
 
         if np.array_equal(C, C_prev):
             break
 
-    diff = X[:, np.newaxis] - C  # numpy.ndarray of shape (n, k, d)
-    dist = np.linalg.norm(diff, axis=2)  # numpy.ndarray of shape (n, k)
-    clss = np.argmin(dist, axis=1)  # numpy.ndarray of shape (n,)
+    diff = X[:, np.newaxis] - C
+    dist = np.linalg.norm(diff, axis=2)
+    clss = np.argmin(dist, axis=1)
 
     return C, clss
