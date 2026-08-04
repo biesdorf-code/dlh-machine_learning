@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""module that performs K-means on a dataset"""
 import numpy as np
 
 
