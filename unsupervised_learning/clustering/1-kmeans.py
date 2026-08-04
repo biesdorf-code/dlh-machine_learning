@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""k-means"""
+"""Write a function that performs K-means on a dataset:
+"""
+
 import numpy as np
 
 
