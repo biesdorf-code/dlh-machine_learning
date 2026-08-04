@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""module implements k-means"""
+"""k-means"""
 import numpy as np
 
 
