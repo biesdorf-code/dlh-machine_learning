@@ -4,7 +4,7 @@ import tensorflow as tf
 
 
 def flip_image(image):
-    """ 
+    """
     Flips an image left to right
     """
     return tf.image.flip_left_right(image)
